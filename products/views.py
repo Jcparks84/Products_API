@@ -1,12 +1,13 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import ProductsSerializer
-from .models import Product
+from .models import Products
 
 
 @api_view(['GET'])
 def products_list(request):
-    products = Product.objects.all()
+
+    products = Products.objects.all()
 
     serializer = ProductsSerializer(products, many = True)
 
