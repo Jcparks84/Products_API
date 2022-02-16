@@ -1,3 +1,4 @@
+from ast import Delete
 from webbrowser import get
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
@@ -33,4 +34,8 @@ def products_detail(request, pk):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+    elif request.method == 'DELETE':
+        products.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 
